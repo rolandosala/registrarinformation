@@ -1,0 +1,80 @@
+EDUC 101-4;Developmental Reading I;1.8; ;3.0
+FILI 101;Komunikasyon sa Akademikong Filipino;1.6; ;3.0
+HUMAN 101;Art Appreciation;1.7; ;3.0
+MATH 101;Fundamentals of Mathematics;2.0; ;3.0
+BIOSCI 203;Statistics for Biology;2.8; ;3.0
+EDUC 202-3F;Principles of Teaching I;1.2; ;3.0
+BIOSCI 201;Biological Science I (Zoology);2.5; ;5.0
+ENGLI 203;Philippine Literature;2.3; ;3.0
+EDUC 101-4;Developmental Reading I;1.8; ;3.0
+FILI 101;Komunikasyon sa Akademikong Filipino;1.6; ;3.0
+HUMAN 101;Art Appreciation;1.7; ;3.0
+MATH 101;Fundamentals of Mathematics;2.0; ;3.0
+BIOSCI 203;Statistics for Biology;2.8; ;3.0
+EDUC 202-3F;Principles of Teaching I;1.2; ;3.0
+BIOSCI 201;Biological Science I (Zoology);2.5; ;5.0
+ENGLI 203;Philippine Literature;2.3; ;3.0
+EDUC 101-4;Developmental Reading I;1.8; ;3.0
+FILI 101;Komunikasyon sa Akademikong Filipino;1.6; ;3.0
+HUMAN 101;Art Appreciation;1.7; ;3.0
+MATH 101;Fundamentals of Mathematics;2.0; ;3.0
+BIOSCI 203;Statistics for Biology;2.8; ;3.0
+EDUC 202-3F;Principles of Teaching I;1.2; ;3.0
+BIOSCI 201;Biological Science I (Zoology);2.5; ;5.0
+ENGLI 203;Philippine Literature;2.3; ;3.0
+EDUC 101-4;Developmental Reading I;1.8; ;3.0
+FILI 101;Komunikasyon sa Akademikong Filipino;1.6; ;3.0
+HUMAN 101;Art Appreciation;1.7; ;3.0
+MATH 101;Fundamentals of Mathematics;2.0; ;3.0
+BIOSCI 203;Statistics for Biology;2.8; ;3.0
+EDUC 202-3F;Principles of Teaching I;1.2; ;3.0
+BIOSCI 201;Biological Science I (Zoology);2.5; ;5.0
+ENGLI 203;Philippine Literature;2.3; ;3.0
+EDUC 101-4;Developmental Reading I;1.8; ;3.0
+FILI 101;Komunikasyon sa Akademikong Filipino;1.6; ;3.0
+HUMAN 101;Art Appreciation;1.7; ;3.0
+MATH 101;Fundamentals of Mathematics;2.0; ;3.0
+BIOSCI 203;Statistics for Biology;2.8; ;3.0
+EDUC 202-3F;Principles of Teaching I;1.2; ;3.0
+BIOSCI 201;Biological Science I (Zoology);2.5; ;5.0
+ENGLI 203;Philippine Literature;2.3; ;3.0
+EDUC 101-4;Developmental Reading I;1.8; ;3.0
+FILI 101;Komunikasyon sa Akademikong Filipino;1.6; ;3.0
+HUMAN 101;Art Appreciation;1.7; ;3.0
+MATH 101;Fundamentals of Mathematics;2.0; ;3.0
+BIOSCI 203;Statistics for Biology;2.8; ;3.0
+EDUC 202-3F;Principles of Teaching I;1.2; ;3.0
+BIOSCI 201;Biological Science I (Zoology);2.5; ;5.0
+ENGLI 203;Philippine Literature;2.3; ;3.0
+EDUC 101-4;Developmental Reading I;1.8; ;3.0
+FILI 101;Komunikasyon sa Akademikong Filipino;1.6; ;3.0
+HUMAN 101;Art Appreciation;1.7; ;3.0
+MATH 101;Fundamentals of Mathematics;2.0; ;3.0
+BIOSCI 203;Statistics for Biology;2.8; ;3.0
+EDUC 202-3F;Principles of Teaching I;1.2; ;3.0
+BIOSCI 201;Biological Science I (Zoology);2.5; ;5.0
+ENGLI 203;Philippine Literature;2.3; ;3.0
+EDUC 101-4;Developmental Reading I;1.8; ;3.0
+FILI 101;Komunikasyon sa Akademikong Filipino;1.6; ;3.0
+HUMAN 101;Art Appreciation;1.7; ;3.0
+MATH 101;Fundamentals of Mathematics;2.0; ;3.0
+BIOSCI 203;Statistics for Biology;2.8; ;3.0
+EDUC 202-3F;Principles of Teaching I;1.2; ;3.0
+BIOSCI 201;Biological Science I (Zoology);2.5; ;5.0
+ENGLI 203;Philippine Literature;2.3; ;3.0
+EDUC 101-4;Developmental Reading I;1.8; ;3.0
+FILI 101;Komunikasyon sa Akademikong Filipino;1.6; ;3.0
+HUMAN 101;Art Appreciation;1.7; ;3.0
+MATH 101;Fundamentals of Mathematics;2.0; ;3.0
+BIOSCI 203;Statistics for Biology;2.8; ;3.0
+EDUC 202-3F;Principles of Teaching I;1.2; ;3.0
+BIOSCI 201;Biological Science I (Zoology);2.5; ;5.0
+ENGLI 203;Philippine Literature;2.3; ;3.0
+EDUC 101-4;Developmental Reading I;1.8; ;3.0
+FILI 101;Komunikasyon sa Akademikong Filipino;1.6; ;3.0
+HUMAN 101;Art Appreciation;1.7; ;3.0
+MATH 101;Fundamentals of Mathematics;2.0; ;3.0
+BIOSCI 203;Statistics for Biology;2.8; ;3.0
+EDUC 202-3F;Principles of Teaching I;1.2; ;3.0
+BIOSCI 201;Biological Science I (Zoology);2.5; ;5.0
+ENGLI 203;Philippine Literature;2.3; ;3.0
