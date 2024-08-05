@@ -1,6 +1,8 @@
 <?php
 require('fpdf/fpdf.php');
 $db = new PDO("mysql:host=localhost;dbname=studentrecord_db", "root", "");
+global $personaldata;
+
 
 //Get Personal Background
 class PDF extends FPDF
@@ -51,15 +53,31 @@ class PDF extends FPDF
 		$this->SetFillColor(42,44,204);
 		$this->SetTextColor(255,255,255);
 		$this->Cell(0,7,'OFFICIAL TRANSCRIPT OF RECORDS',0,0,'C', true);
+
+		$this->SetTextColor(0,0,0);
 		// Line break
-		$this->Ln(10);
+		$db = new PDO("mysql:host=localhost;dbname=studentrecord_db", "root", "");
+		$statement = $db->prepare('SELECT studentid, lastname, firstname, middlename FROM personalbackground_tbl WHERE studentid="13-10328"');
+		$statement->execute(); 
+		while($row = $statement->fetch()){
+			$personaldata[] = array($row['studentid'], $row['lastname'], $row['firstname'], $row['middlename']);
+		}
+		
+		
+		$subjects_header = array('COURSE NO', 'DESCRIPTIVE TITLE', 'FINAL GRADE', 'RE-EX', 'CREDIT');
+		if($this->PageNo() > 1){
+			$this->Ln();
+			$this->Header1($personaldata, $subjects_header);
+			$this->Ln(10);
+		} else {
+			$this->Ln(10);
+		}
 	}
+
 
 // Page footer
 	function Footer() 
 	{
-
-		
 
 		// Position at 1.5 cm from bottom
 		$this->SetY(-50);
@@ -300,12 +318,16 @@ class PDF extends FPDF
 		$this->MultiCell(0,5,'The semestral grade point average (GPA) is computed by multiplying each grade by the corresponding unit per grade and dividing the sum of these products by the total number of units enrolled in the semester.');
 
 	}
-	function Header1($personaldata, $header) 
+	function Header1($data, $header)
 	{
-		$w = array(40, 90, 30, 15, 25);
-		
-		
-
+		$this->SetFont('cambria','B',12);
+		foreach($data as $rows)
+		{
+			$this->Cell(40,10,$rows[0],0,0,'C');
+			$this->Cell(130,10,$rows[1].', '.$rows[2].' '.$rows[3],0,0,'C');
+			
+		}
+		$w = array(40, 90, 30, 15, 20);
 		$this->Ln();
 		$this->Cell(1);
 		$this->SetFont('cambria','B',11);
@@ -314,7 +336,7 @@ class PDF extends FPDF
 	}
 
 // Page 2 Content
-	function Page2($header, $data, $course)
+	function Page2($data, $course)
 	{	
 		
 		$w = array(30, 90, 30, 20, 25);
@@ -343,11 +365,11 @@ class PDF extends FPDF
 				if($row[0] == $rows[5] && $row[1] == $rows[6]){
 					$this->Cell(10);
 					$this->SetFont('times','',11);
-					$this->Cell($w[0],4.5,$rows[0],0,0,'L');
-					$this->Cell($w[1],4.5,$rows[1],0,0,'L');
-					$this->Cell($w[2],4.5,$rows[2],0,0,'C');
-					$this->Cell($w[3]-5,4.5,$rows[3],0,0,'C');
-					$this->Cell($w[4]-5,4.5,$rows[4],0,0,'C');
+					$this->Cell($w[0],5,$rows[0],0,0,'L');
+					$this->Cell($w[1],5,$rows[1],0,0,'L');
+					$this->Cell($w[2],5,$rows[2],0,0,'C');
+					$this->Cell($w[3]-5,5,$rows[3],0,0,'C');
+					$this->Cell($w[4]-5,5,$rows[4],0,0,'C');
 					$this->Ln();
 				}
 				
@@ -430,19 +452,21 @@ $statement = null;
 $pdf = new PDF('P','mm','Legal');
 $pdf->AliasNbPages();
 
+
 $grading_header = array('GRADE', 'EQUIVALENT', 'GRADE', 'EQUIVALENT', 'GRADE', 'EQUIVALENT');
-$subjects_header = array('COURSE NO', 'DESCRIPTIVE TITLE', 'FINAL GRADE', 'RE-EX', 'CREDIT');
+
 /* $semester_header = array('1st Sem', '2013-2014', 'BSED', 'BIOLOGICAL SCIENCES'); */
 $grading_data = $pdf->LoadData('gradingsystem.txt');
 $subjects_data = $pdf->LoadData('subjectstaken.txt');
 
 $pdf->AddPage();
-$pdf->Page1($grading_header, $grading_data, $personaldata, $education);
 $pdf->SetAutoPageBreak(true, 55);
-if($pdf->AliasNbPages() == 3){
-	$pdf->Header1($personaldata, $subjects_header);
-}
-$pdf->Page2($subjects_header, $data, $semester_header);
+$pdf->Page1($grading_header, $grading_data, $personaldata, $education);
+$pdf->Page2($data, $semester_header);
+
+
+
+
 
 $pdf->Output();
 ?>
