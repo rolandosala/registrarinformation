@@ -47,17 +47,16 @@ class PDF extends FPDF
 		$this->Cell(0,0,'School Code : 00008056',0,0,'L');
 
 		$this->Ln(6);
-		$this->SetFont('cambria','B',11);
-		
+		$this->SetFont('cambria','B',14);
 		$this->Cell(1);
-		$this->SetFillColor(42,44,204);
+		$this->SetFillColor(0,58,117);
 		$this->SetTextColor(255,255,255);
 		$this->Cell(0,7,'OFFICIAL TRANSCRIPT OF RECORDS',0,0,'C', true);
 
 		$this->SetTextColor(0,0,0);
 		// Line break
 		$db = new PDO("mysql:host=localhost;dbname=studentrecord_db", "root", "");
-		$statement = $db->prepare('SELECT studentid, lastname, firstname, middlename FROM personalbackground_tbl WHERE studentid="13-10328"');
+		$statement = $db->prepare('SELECT studentid, lastname, firstname, middlename FROM personalbackground_tbl WHERE studentid="97-10291"');
 		$statement->execute(); 
 		while($row = $statement->fetch()){
 			$personaldata[] = array($row['studentid'], $row['lastname'], $row['firstname'], $row['middlename']);
@@ -68,7 +67,7 @@ class PDF extends FPDF
 		if($this->PageNo() > 1){
 			$this->Ln();
 			$this->Header1($personaldata, $subjects_header);
-			$this->Ln(10);
+			$this->Ln(8);
 		} else {
 			$this->Ln(10);
 		}
@@ -81,10 +80,14 @@ class PDF extends FPDF
 
 		// Position at 1.5 cm from bottom
 		$this->SetY(-50);
-		$this->GetY();
 		// Arial italic 8
 		$this->SetFont('cambria','B',11);
 		$this->Cell(0,0,'Not Valid Without University Seal',0,0,'L');
+
+		$this->Ln(5);
+		$this->Cell(10);
+		$this->SetFont('cambria','B',9);
+		$this->Cell(40,15,'DOC. STAMP PAID',1,0,'C');
 
 		$this->Ln(5);
 		$this->Cell(100);
@@ -182,7 +185,7 @@ class PDF extends FPDF
 			$this->SetFont('times','',11);
 			$this->Cell(0,8,' : '.$row[7],0,0,'L');
 
-			$this->Image('img/'.$row[13],160,80,45);
+			/* $this->Image('img/'.$row[13],160,80,45); */
 
 			$this->Ln();
 			$this->SetFont('cambria','B',11);
@@ -320,11 +323,11 @@ class PDF extends FPDF
 	}
 	function Header1($data, $header)
 	{
-		$this->SetFont('cambria','B',12);
+		$this->SetFont('cambria','B',14);
 		foreach($data as $rows)
 		{
-			$this->Cell(40,10,$rows[0],0,0,'C');
-			$this->Cell(130,10,$rows[1].', '.$rows[2].' '.$rows[3],0,0,'C');
+			$this->Cell(40,8,$rows[0],0,0,'C');
+			$this->Cell(100,8,$rows[1].', '.$rows[2].' '.$rows[3],0,0,'C');
 			
 		}
 		$w = array(40, 90, 30, 15, 20);
@@ -332,7 +335,7 @@ class PDF extends FPDF
 		$this->Cell(1);
 		$this->SetFont('cambria','B',11);
 		for($i=0;$i<count($header);$i++)
-			$this->Cell($w[$i],10,$header[$i],'TB',0,'L');
+			$this->Cell($w[$i],7,$header[$i],'TB',0,'L');
 	}
 
 // Page 2 Content
@@ -355,10 +358,10 @@ class PDF extends FPDF
 			}
 			$this->Cell(5);
 			$this->SetFont('cambria','B',11);
-            $this->Cell($width[0],7,$sem,0,0,'L');
-            $this->Cell($width[1],7,$row[1],0,0,'L');
-            $this->Cell($width[2],7,$row[2],0,0,'L');
-            $this->Cell($width[3],7,$row[3],0,0,'L');
+            $this->Cell($width[0],6,$sem,0,0,'L');
+            $this->Cell($width[1],6,$row[1],0,0,'L');
+            $this->Cell($width[2],6,$row[2],0,0,'L');
+            $this->Cell($width[3],6,$row[3],0,0,'L');
             $this->Ln();
 			foreach($data as $rows)
 			{
@@ -393,20 +396,20 @@ class PDF extends FPDF
 
 
 
-$statement = $db->prepare('SELECT semester, academicyear, course, major FROM subjectstaken_tbl WHERE studentid="13-10328" GROUP BY academicyear, semester');
+$statement = $db->prepare('SELECT semester, academicyear, course, major FROM subjectstaken_tbl WHERE studentid="97-10291" GROUP BY academicyear, semester');
 $statement->execute(); 
 while($row = $statement->fetch()){
     $semester_header[] = array($row['semester'], $row['academicyear'], $row['course'], $row['major']);
 }
 
 //Get Subjects Taken
-$statement = $db->prepare('SELECT * FROM subjectstaken_tbl WHERE studentid="13-10328"');
+$statement = $db->prepare('SELECT * FROM subjectstaken_tbl WHERE studentid="97-10291"');
 $statement->execute(); 
 while($row = $statement->fetch()){
     $data[] = array($row['coursenumber'], $row['descriptivetitle'], $row['finalgrade'], $row['reex'], $row['credit'], $row['semester'], $row['academicyear']);
 }
 
-$statement = $db->prepare('SELECT * FROM personalbackground_tbl WHERE studentid="13-10328"');
+$statement = $db->prepare('SELECT * FROM personalbackground_tbl WHERE studentid="97-10291"');
 $statement->execute();
 while($row = $statement->fetch()){
 	$personaldata[] = array(
@@ -429,7 +432,7 @@ while($row = $statement->fetch()){
 
 
 
-$statement = $db->prepare('SELECT * FROM educationalbackground_tbl WHERE studentid="13-10328"');
+$statement = $db->prepare('SELECT * FROM educationalbackground_tbl WHERE studentid="97-10291"');
 $statement->execute();
 while($row = $statement->fetch()){
 	$education[] = array(
