@@ -11,7 +11,7 @@ class PDF extends FPDF
 	function Header()
 	{
 		// Logo
-		$this->Image('fpdf/tutorial/logo.png',10,6,35);
+		$this->Image('img/logo.png',10,6,30);
 		// Arial bold 15
 		$this->SetFont('cambria','',11);
 		// Move to the right
@@ -56,7 +56,7 @@ class PDF extends FPDF
 		$this->SetTextColor(0,0,0);
 		// Line break
 		$db = new PDO("mysql:host=localhost;dbname=studentrecord_db", "root", "");
-		$statement = $db->prepare('SELECT studentid, lastname, firstname, middlename FROM personalbackground_tbl WHERE studentid="97-10291"');
+		$statement = $db->prepare('SELECT studentid, lastname, firstname, middlename FROM personalbackground_tbl WHERE studentid="13-10328"');
 		$statement->execute(); 
 		while($row = $statement->fetch()){
 			$personaldata[] = array($row['studentid'], $row['lastname'], $row['firstname'], $row['middlename']);
@@ -78,26 +78,43 @@ class PDF extends FPDF
 	function Footer() 
 	{
 
-		// Position at 1.5 cm from bottom
-		$this->SetY(-50);
-		// Arial italic 8
-		$this->SetFont('cambria','B',11);
+		
+
+		
+
+		if($this->PageNo() == 3){
+			$this->SetY(-70);
+			$this->SetFont('cambria','B',11);
 		$this->Cell(0,0,'Not Valid Without University Seal',0,0,'L');
+			$this->Ln(7);
+			$this->Cell(10);
+			$this->SetFont('times','',10);
+			$docstamp = '9606023';
+			$datepaid = '08/06/2024';
+			$txt = 'DOC. STAMP PAID 
+under OR No.: '.$docstamp.'
+Date Paid: '.$datepaid;
+			$this->MultiCell(40,5,$txt, 1, 'C');
+		} else {
+			// Position at 1.5 cm from bottom
+			$this->SetY(-50);
+			// Arial italic 8
+			$this->SetFont('cambria','B',11);
+			$this->Cell(0,0,'Not Valid Without University Seal',0,0,'L');
+			$this->Ln(5);
+		}
 
-		$this->Ln(5);
-		$this->Cell(10);
-		$this->SetFont('cambria','B',9);
-		$this->Cell(40,15,'DOC. STAMP PAID',1,0,'C');
-
-		$this->Ln(5);
+		
 		$this->Cell(100);
 		$this->SetFont('cambria','B',11);
 		$this->Cell(0,0,'RENATO M. TINDUGAN, MAEd',0,0,'C');
 
 		$this->Ln(8);
 		// Page number
+		$or_datepaid = '08/06/2024';
+		$or_number = '5853543';
 		$this->SetFont('Times','',11);
-		$this->Cell(100,0,'OR No.: 000000 Date: 00/00/0000',0,0,'L');
+		$this->Cell(100,0,'OR No.: '.$or_number.' Date: '.$or_datepaid,0,0,'L');
 		$this->SetFont('Times','',11);
 		$this->Cell(0,-5,'Registrar III',0,0,'C');
 
@@ -378,14 +395,34 @@ class PDF extends FPDF
 				
 			}
         }
-        /* for($i=0;$i<count($course);$i++)
-            $this->Cell($width[$i],7,$course[$i],0,0,'L'); */
+		$this->Ln();
+		$this->Cell(107);
+		$this->SetFont('cambria', 'B', 11);
+		$this->Cell(0,0,'General Average: 1.072', 0,0, 'L');
+		$this->Ln(5);
+		$this->SetFont('cambria','B',10);
+		$this->Cell(0,10,'---------------------------------------------------------------------------------------------------------------------------------ENTRIES CLOSED-----------',0,0,'R');
+
+		$this->Ln();
+		$this->SetFont('cambria', 'B', 12);
+		$note = 'GRADUATED WITH THE DEGREE OF  BACHELOR OF SECONDARY EDUCATION MAJOR IN BIOLOGICAL SCIENCE ON MARCH 30, 2016 PER BOARD OF TRUSTEES RESOLUTION NO. 04, SERIES OF 2016';
+		$this->MultiCell(0,7,$note,0, 'C');
 
         $this->Ln();
+		$this->SetFont('cambria','B',11);
+		$this->Cell(25,7,'Remarks',0);
+		$this->SetFont('cambria','B',11);
+		$this->Cell(5,7,':',0,0, 'C');
 		$this->SetFont('times','',11);
-        // Data
-		
-        
+		$this->Cell(0,7,'FOR LOCAL EMPLOYMENT PURPOSE ONLY',0);
+
+		$this->Ln();
+		$this->SetFont('cambria','B',11);
+		$this->Cell(25,7,'Date Issued',0);
+		$this->SetFont('cambria','B',11);
+		$this->Cell(5,7,':',0,0, 'C');
+		$this->SetFont('times','',11);
+		$this->Cell(0,7,'August 06, 2024',0);
 		
 	}
 
@@ -396,20 +433,20 @@ class PDF extends FPDF
 
 
 
-$statement = $db->prepare('SELECT semester, academicyear, course, major FROM subjectstaken_tbl WHERE studentid="97-10291" GROUP BY academicyear, semester');
+$statement = $db->prepare('SELECT semester, academicyear, course, major FROM subjectstaken_tbl WHERE studentid="13-10328" GROUP BY academicyear, semester');
 $statement->execute(); 
 while($row = $statement->fetch()){
     $semester_header[] = array($row['semester'], $row['academicyear'], $row['course'], $row['major']);
 }
 
 //Get Subjects Taken
-$statement = $db->prepare('SELECT * FROM subjectstaken_tbl WHERE studentid="97-10291"');
+$statement = $db->prepare('SELECT * FROM subjectstaken_tbl WHERE studentid="13-10328"');
 $statement->execute(); 
 while($row = $statement->fetch()){
     $data[] = array($row['coursenumber'], $row['descriptivetitle'], $row['finalgrade'], $row['reex'], $row['credit'], $row['semester'], $row['academicyear']);
 }
 
-$statement = $db->prepare('SELECT * FROM personalbackground_tbl WHERE studentid="97-10291"');
+$statement = $db->prepare('SELECT * FROM personalbackground_tbl WHERE studentid="13-10328"');
 $statement->execute();
 while($row = $statement->fetch()){
 	$personaldata[] = array(
@@ -432,7 +469,7 @@ while($row = $statement->fetch()){
 
 
 
-$statement = $db->prepare('SELECT * FROM educationalbackground_tbl WHERE studentid="97-10291"');
+$statement = $db->prepare('SELECT * FROM educationalbackground_tbl WHERE studentid="13-10328"');
 $statement->execute();
 while($row = $statement->fetch()){
 	$education[] = array(
